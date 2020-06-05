@@ -46,4 +46,6 @@ Incorrect syntax near il' as the database tried to execute evil.
 
 Includes decription snippets from OWASP on SQL Injections.
 
+---
+
 Thank you for your interest, this project was fun to work on!
