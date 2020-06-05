@@ -2,4 +2,3 @@
 <?php
     echo sha1("uGotHacked");
 ?>
-
