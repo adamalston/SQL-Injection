@@ -1,5 +1,7 @@
 # SQL Injection
 
+[![License](https://img.shields.io/github/license/adamalston/SQL-Injection?color=critical)](LICENSE)
+
 A SQL Injection attack consists of the insertion or injection of a SQL query via the input data from the client to the application. A successful SQL injection exploit can read sensitive data from the database, modify database data (Insert/Update/Delete), execute administration operations on the database (such as shutdown the DBMS), recover the content of a given file present on the DBMS file system and in some cases issue commands to the operating system. SQL injection attacks are a type of injection attack, in which SQL commands are injected into data-plane input to effect the execution of predefined SQL commands.
 
 SQL injection attacks allow attackers to spoof identity, tamper with existing data, cause repudiation issues such as voiding transactions or changing balances, allow the complete disclosure of all data on the system, destroy the data or make it otherwise unavailable, and become administrators of the database server.
@@ -11,7 +13,6 @@ The severity of SQL injection attacks is limited by the attacker’s skill and i
 ## Example
 
 Hospital database attack
-
 
 SQL query:
 
@@ -43,9 +44,6 @@ Incorrect syntax near il' as the database tried to execute evil.
 
 ---
 
-Includes decriptions from OWASP on SQL Injections.
+Includes decription snippets from OWASP on SQL Injections.
 
 Thank you for your interest, this project was fun to work on!
-
-
-
