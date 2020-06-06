@@ -71,14 +71,14 @@ This SQL statement will result in the permanent deletion (`DROP TABLE` is an aut
 To protect a website from SQL injection, you can use SQL parameters - values that are added to an SQL query at execution time.
 
 ```python
-txtNam = getRequestString("CustomerName")
-txtAdd = getRequestString("Address")
-txtCit = getRequestString("City")
-txtZip = getRequestString("Zip")
+name = getRequestString("CustomerName")
+addr = getRequestString("Address")
+city = getRequestString("City")
+zipc = getRequestString("Zip")
 
 txtSQL = "INSERT INTO Customers (CustomerName,Address,City,Zip) Values(@0,@1,@2,@3)"
 
-db.Execute(txtSQL,txtNam,txtAdd,txtCit)
+db.Execute(txtSQL,name,addr,city,zipc)
 ```
 
 The SQL engine checks each parameter to ensure that it is valid for its column. All parameters are treated literally and not as part of the SQL to be executed.
@@ -86,12 +86,12 @@ The SQL engine checks each parameter to ensure that it is valid for its column. 
 **In PHP**
 
 ```php
-$stmt = $dbh->prepare("INSERT INTO Customers (CustomerName,Address,City,Zip) VALUES (:nam, :add, :cit, :zip)");
+$stmt = $dbh->prepare("INSERT INTO Customers (CustomerName,Address,City,Zip) VALUES (:name, :addr, :city, :zipc)");
 
-$stmt->bindParam(':nam', $txtNam);
-$stmt->bindParam(':add', $txtAdd);
-$stmt->bindParam(':cit', $txtCit);
-$stmt->bindParam(':zip', $txtZip);
+$stmt->bindParam(':name', $name);
+$stmt->bindParam(':addr', $addr);
+$stmt->bindParam(':city', $city);
+$stmt->bindParam(':zipc', $zipc);
 
 $stmt->execute();
 ```
