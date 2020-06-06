@@ -16,6 +16,7 @@ The severity of SQL injection attacks is limited by the attacker’s skill and i
 When prompted in an application, a user enters:
 
 `username:` `JohnDoe`
+
 `password:` `password`
 
 The application processes the input:
@@ -39,6 +40,7 @@ A malicious party may get access to usernames and passwords in a database by ins
 A user enters:
 
 `username:` `" OR ""="`
+
 `password:` `" OR ""="`
 
 Query becomes:
@@ -54,6 +56,7 @@ This SQL statement will return all rows from the users table since `OR ""=""` al
 A user enters:
 
 `username:` `coldfusion; DROP TABLE Suppliers`
+
 `password:` `password`
 
 Query becomes
@@ -62,6 +65,36 @@ SELECT * FROM users WHERE username = "coldfusion"; DROP TABLE stockPortfolio;
 ```
 
 This SQL statement will result in the permanent deletion (`DROP TABLE` is an automatically committed statement whereas `DELETE` is not and can be rolled back) of the stockPortfolio table's data and structure from the database.
+
+## Prevention/Protection
+
+To protect a website from SQL injection, you can use SQL parameters - values that are added to an SQL query at execution time.
+
+```python
+txtNam = getRequestString("CustomerName")
+txtAdd = getRequestString("Address")
+txtCit = getRequestString("City")
+txtZip = getRequestString("Zip")
+
+txtSQL = "INSERT INTO Customers (CustomerName,Address,City,Zip) Values(@0,@1,@2,@3)"
+
+db.Execute(txtSQL,txtNam,txtAdd,txtCit)
+```
+
+The SQL engine checks each parameter to ensure that it is valid for its column. All parameters are treated literally and not as part of the SQL to be executed.
+
+**In PHP**
+
+```php
+$stmt = $dbh->prepare("INSERT INTO Customers (CustomerName,Address,City,Zip) VALUES (:nam, :add, :cit, :zip)");
+
+$stmt->bindParam(':nam', $txtNam);
+$stmt->bindParam(':add', $txtAdd);
+$stmt->bindParam(':cit', $txtCit);
+$stmt->bindParam(':zip', $txtZip);
+
+$stmt->execute();
+```
 
 ---
 
