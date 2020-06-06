@@ -10,37 +10,58 @@ SQL injection is common with PHP (this repo has a php SQL injection implemtation
 
 The severity of SQL injection attacks is limited by the attacker’s skill and imagination, and to a lesser extent, defense in depth countermeasures, such as low privilege connections to the database server and so on. In general, consider SQL injection a high impact severity.
 
-## Example
+## Examples
+### Normal Backend Interaction
 
-Hospital database attack
+When prompted in an application, a user enters:
 
-SQL query:
+`username:` `JohnDoe`
+`password:` `password`
 
-```SQL
-select ssn, firstname, lastname
-from patients
+The application processes the input:
+```python
+username = getRequestString("username")
+password = getRequestString("userpassword")
+
+sql = 'SELECT * FROM Users WHERE name ="' + username + '" AND pass = "' + password + '"'
 ```
 
-The attacker then gives a malicious parameter (in this case, their firstname) in a client:
+Database query:
 
-```SQL
-Firstname: evil'ex
-Lastname: newman
+```sql
+SELECT * FROM users WHERE name = "JohnDoe" AND pass = "password"
 ```
 
-The query string becomes:
+### Return the Entire Table
 
-```SQL
-select ssn, firstname, lastname
-from patients
-where firstname = "evil'ex" and lastname = "newman"
+A malicious party may get access to usernames and passwords in a database by inserting `" OR ""="` into the user name or password text box:
+
+A user enters:
+
+`username:` `" OR ""="`
+`password:` `" OR ""="`
+
+Query becomes:
+
+```SQL 
+SELECT * FROM users WHERE name = "" OR ""="" AND pass = "" OR ""=""
 ```
 
-Which the database attempts to run:
+This SQL statement will return all rows from the users table since `OR ""=""` always evaluates to true.
 
+### Delete a Table Using a Batched SQL Statements
+
+A user enters:
+
+`username:` `coldfusion; DROP TABLE Suppliers`
+`password:` `password`
+
+Query becomes
+```sql
+SELECT * FROM users WHERE username = "coldfusion"; DROP TABLE stockPortfolio;
 ```
-Incorrect syntax near il' as the database tried to execute evil.
-```
+
+This SQL statement will result in the permanent deletion (`DROP TABLE` is an automatically committed statement whereas `DELETE` is not and can be rolled back) of the stockPortfolio table's data and structure from the database.
 
 ---
 
