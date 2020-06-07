@@ -6,7 +6,7 @@ A SQL Injection attack consists of the insertion or injection of a SQL query via
 
 SQL injection attacks allow attackers to spoof identity, tamper with existing data, cause repudiation issues such as voiding transactions or changing balances, allow the complete disclosure of all data on the system, destroy the data or make it otherwise unavailable, and become administrators of the database server.
 
-SQL injection is common with PHP (this repo has a PHP SQL injection implementation) and ASP applications due to the prevalence of older functional interfaces. Due to the nature of programmatic interfaces available, J2EE and <span>ASP.NET</span> applications are less likely to have easily exploited SQL injections.
+SQL injection is common with PHP (this repo has a PHP SQL injection implementation) and ASP applications due to the prevalence of older functional interfaces. Due to the nature of programmatic interfaces available, Java and <span>ASP.NET</span> applications are less likely to have easily exploited SQL injections.
 
 The severity of SQL injection attacks is limited by the attacker’s skill and imagination, and to a lesser extent, defense in depth countermeasures, such as low privilege connections to the database server and so on. In general, consider SQL injection a high impact severity.
 
