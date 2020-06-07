@@ -2,15 +2,16 @@
 
 [![License](https://img.shields.io/github/license/adamalston/SQL-Injection?color=critical)](LICENSE)
 
-A SQL Injection attack consists of the insertion or injection of a SQL query via the input data from the client to the application. A successful SQL injection exploit can read sensitive data from the database, modify database data (Insert/Update/Delete), execute administration operations on the database (such as shutdown the DBMS), recover the content of a given file present on the DBMS file system and in some cases issue commands to the operating system. SQL injection attacks are a type of injection attack, in which SQL commands are injected into data-plane input to effect the execution of predefined SQL commands.
+A SQL Injection attack consists of the insertion or injection of a SQL query via the input data from the client to the application. A successful SQL injection exploit can read sensitive data from the database, modify database data (Insert/Update/Delete), execute administration operations on the database (such as shutdown the DBMS), recover the content of a given file present on the DBMS file system and in some cases issue commands to the operating system. SQL injection attacks are a type of injection attack, in which SQL commands are injected into data-plane input to affect the execution of predefined SQL commands.
 
 SQL injection attacks allow attackers to spoof identity, tamper with existing data, cause repudiation issues such as voiding transactions or changing balances, allow the complete disclosure of all data on the system, destroy the data or make it otherwise unavailable, and become administrators of the database server.
 
-SQL injection is common with PHP (this repo has a php SQL injection implemtation) and ASP applications due to the prevalence of older functional interfaces. Due to the nature of programmatic interfaces available, J2EE and <span>ASP.NET</span> applications are less likely to have easily exploited SQL injections.
+SQL injection is common with PHP (this repo has a PHP SQL injection implementation) and ASP applications due to the prevalence of older functional interfaces. Due to the nature of programmatic interfaces available, J2EE and <span>ASP.NET</span> applications are less likely to have easily exploited SQL injections.
 
 The severity of SQL injection attacks is limited by the attacker’s skill and imagination, and to a lesser extent, defense in depth countermeasures, such as low privilege connections to the database server and so on. In general, consider SQL injection a high impact severity.
 
 ## Examples
+
 ### Normal Backend Interaction
 
 When prompted in an application, a user enters:
@@ -68,15 +69,15 @@ This SQL statement will result in the permanent deletion (`DROP TABLE` is an aut
 
 ## Prevention/Protection
 
-To protect a website from SQL injection, you can use SQL parameters - values that are added to an SQL query at execution time.
+SQL parameters can be used to protect a website from SQL injection. SQL parameters are values that are added to a SQL query at the time of execution.
 
 ```python
-name = getRequestString("CustomerName")
+name = getRequestString("PatientName")
 addr = getRequestString("Address")
 city = getRequestString("City")
 zipc = getRequestString("Zip")
 
-txtSQL = "INSERT INTO Customers (CustomerName,Address,City,Zip) Values(@0,@1,@2,@3)"
+txtSQL = "INSERT INTO Patients (PatientName,Address,City,Zip) Values(@0,@1,@2,@3)"
 
 db.Execute(txtSQL,name,addr,city,zipc)
 ```
@@ -86,7 +87,7 @@ The SQL engine checks each parameter to ensure that it is valid for its column. 
 **In PHP**
 
 ```php
-$stmt = $dbh->prepare("INSERT INTO Customers (CustomerName,Address,City,Zip) VALUES (:name, :addr, :city, :zipc)");
+$stmt = $dbh->prepare("INSERT INTO Patients (PatientName,Address,City,Zip) VALUES (:name, :addr, :city, :zipc)");
 
 $stmt->bindParam(':name', $name);
 $stmt->bindParam(':addr', $addr);
