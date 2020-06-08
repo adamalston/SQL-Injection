@@ -84,7 +84,7 @@ db.Execute(txtSQL,name,addr,city,zipc)
 
 The SQL engine checks each parameter to ensure that it is valid for its column. All parameters are treated literally and not as part of the SQL to be executed.
 
-**In PHP**
+In PHP:
 
 ```php
 $stmt = $dbh->prepare("INSERT INTO Patients (PatientName,Address,City,Zip) VALUES (:name, :addr, :city, :zipc)");
