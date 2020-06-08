@@ -60,7 +60,8 @@ A user enters:
 
 `password:` `password`
 
-Query becomes
+Query becomes:
+
 ```sql
 SELECT * FROM users WHERE username = "coldfusion"; DROP TABLE stockPortfolio;
 ```
