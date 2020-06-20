@@ -36,7 +36,7 @@ SELECT * FROM users WHERE name = "JohnDoe" AND pass = "password"
 
 ### 1. Return the Entire Table
 
-A malicious party may get access to usernames and passwords in a database by inserting `" OR ""="` into the user name or password text box:
+A malicious party may get access to usernames and passwords in a database by inserting `" OR ""="` into the username or password text box:
 
 A user enters:
 
@@ -50,9 +50,11 @@ Query becomes:
 SELECT * FROM users WHERE name = "" OR ""="" AND pass = "" OR ""=""
 ```
 
-This SQL statement will return all rows from the users table since `OR ""=""` always evaluates to true.
+This SQL statement will return all rows from the users table since `OR ""=""` always evaluates to true. 
 
 ### 2. Delete a Table Using a Batched SQL Statements
+
+A malicious party may delete an entire table from a database.
 
 A user enters:
 
@@ -63,7 +65,7 @@ A user enters:
 Query becomes:
 
 ```sql
-SELECT * FROM users WHERE username = "coldfusion"; DROP TABLE stockPortfolio;
+SELECT * FROM users WHERE username = "nuclearfusion"; DROP TABLE stockPortfolio;
 ```
 
 This SQL statement will result in the permanent deletion (`DROP TABLE` is an automatically committed statement whereas `DELETE` is not and can be rolled back) of the stockPortfolio table's data and structure from the database.
