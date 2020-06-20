@@ -10,9 +10,7 @@ SQL injection is common with PHP (this repo has a PHP SQL injection implementati
 
 The severity of SQL injection attacks is limited by the attacker’s skill and imagination, and to a lesser extent, defense in depth countermeasures, such as low privilege connections to the database server and so on. In general, consider SQL injection a high impact severity.
 
-## Examples
-
-### Normal Backend Interaction
+## Normal Backend Interaction
 
 When prompted in an application, a user enters:
 
@@ -34,7 +32,9 @@ Database query:
 SELECT * FROM users WHERE name = "JohnDoe" AND pass = "password"
 ```
 
-### Return the Entire Table
+## Examples Attacks
+
+### 1. Return the Entire Table
 
 A malicious party may get access to usernames and passwords in a database by inserting `" OR ""="` into the user name or password text box:
 
@@ -52,7 +52,7 @@ SELECT * FROM users WHERE name = "" OR ""="" AND pass = "" OR ""=""
 
 This SQL statement will return all rows from the users table since `OR ""=""` always evaluates to true.
 
-### Delete a Table Using a Batched SQL Statements
+### 2. Delete a Table Using a Batched SQL Statements
 
 A user enters:
 
