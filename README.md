@@ -1,6 +1,6 @@
 # SQL Injection
 
-[![License](https://img.shields.io/github/license/adamalston/SQL-Injection?color=critical)](LICENSE)
+[![License](https://img.shields.io/github/license/adamalston/SQL-Injection?color=black)](LICENSE)
 
 A SQL Injection attack consists of the insertion or injection of a SQL query via the input data from the client to the application. A successful SQL injection exploit can read sensitive data from the database, modify database data (Insert/Update/Delete), execute administration operations on the database (such as shutdown the DBMS), recover the content of a given file present on the DBMS file system and in some cases issue commands to the operating system. SQL injection attacks are a type of injection attack, in which SQL commands are injected into data-plane input to affect the execution of predefined SQL commands.
 
@@ -14,9 +14,9 @@ The severity of SQL injection attacks is limited by the attacker’s skill and i
 
 When prompted in an application, a user enters:
 
-`username:` `JohnDoe`
+**username:** `JohnDoe`
 
-`password:` `password`
+**password:** `password`
 
 The application processes the input:
 ```python
@@ -40,9 +40,9 @@ A malicious party may get access to usernames and passwords in a database by ins
 
 A user enters:
 
-`username:` `" OR ""="`
+**username:** `" OR ""="`
 
-`password:` `" OR ""="`
+**password:** `" OR ""="`
 
 Query becomes:
 
@@ -56,9 +56,9 @@ This SQL statement will return all rows from the users table since `OR ""=""` al
 
 A user enters:
 
-`username:` `coldfusion; DROP TABLE Suppliers`
+**username:** `coldfusion; DROP TABLE Suppliers`
 
-`password:` `password`
+**password:** `password`
 
 Query becomes:
 
