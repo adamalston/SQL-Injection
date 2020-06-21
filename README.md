@@ -12,7 +12,7 @@ The severity of SQL injection attacks is limited by the attacker’s skill and i
 
 ## Normal Backend Interaction
 
-When prompted in an application, a user enters:
+When prompted by an application, a user enters:
 
 **username:** `JohnDoe`
 
@@ -36,7 +36,7 @@ SELECT * FROM users WHERE name = "JohnDoe" AND pass = "password"
 
 ### 1. Return the Entire Table
 
-A malicious party may get access to usernames and passwords in a database by inserting `" OR ""="` into the username or password text box:
+A malicious party may get access to usernames and passwords in a database.
 
 A user enters:
 
@@ -58,7 +58,7 @@ A malicious party may delete an entire table from a database.
 
 A user enters:
 
-**username:** `coldfusion; DROP TABLE Suppliers`
+**username:** `nuclearfusion; DROP TABLE Suppliers`
 
 **password:** `password`
 
