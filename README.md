@@ -32,7 +32,7 @@ Database query:
 SELECT * FROM users WHERE name = "JohnDoe" AND pass = "password"
 ```
 
-## Examples Attacks
+## Example Attacks
 
 ### 1. Return the Entire Table
 
