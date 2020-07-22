@@ -34,7 +34,7 @@ SELECT * FROM users WHERE name = "JohnDoe" AND pass = "password"
 
 ## Example Attacks
 
-### 1. Return the Entire Table
+### 1. Return an Entire Table
 
 A malicious party may get access to usernames and passwords in a database.
 
@@ -46,11 +46,11 @@ A user enters:
 
 Query becomes:
 
-```SQL 
+```SQL
 SELECT * FROM users WHERE name = "" OR ""="" AND pass = "" OR ""=""
 ```
 
-This SQL statement will return all rows from the users table since `OR ""=""` always evaluates to true. 
+This SQL statement will return all rows from the users table since `OR ""=""` always evaluates to true.
 
 ### 2. Delete a Table Using a Batched SQL Statements
 
