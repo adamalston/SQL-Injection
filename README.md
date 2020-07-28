@@ -104,6 +104,4 @@ $stmt->execute();
 
 Includes decription snippets from OWASP on SQL Injections.
 
----
-
 Thank you for your interest, this project was fun to work on!
